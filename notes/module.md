@@ -1,5 +1,5 @@
 
-# Code
+# Code example
 
 ```go
 
@@ -58,6 +58,8 @@ require (
 
 # Use Go Modules
 
+What is module?
+
 ```
 module：a collection of Go packages
   |
@@ -66,7 +68,9 @@ go.mod:
     - dependency requirements
 ```
 
-Running ENV:
+
+
+The Running ENV for a module:
 
 ```
 1. outside $GOPATH/src <--
@@ -75,7 +79,9 @@ Running ENV:
        - go.mod -------->|
 ```
 
-Creating a new module:
+
+
+How to creating a new module:
 
 ```
 1. create you file.  // status: contains a package
@@ -85,7 +91,9 @@ Creating a new module:
 - Packages in subdirectories have import paths consisting of the module path plus the path to the subdirectory. 
 - So you don't need to run `go mod init` in subdirectories.
 
-go.mod content:
+
+
+Understand go.mod content:
 
 ```bash
 example.com/hello //main module
@@ -98,14 +106,18 @@ rsc.io/sampler v1.3.0
 // ensure that future downloads of these modules retrieve the same bits as the first download
 ```
 
-import other module:
+
+
+How to import dependencies module:
 
 ```go
 import "rsc.io/quote"
 // to check  indirect dependencies
 // cmd: go list -m all
 ```
-upgrading dependencies:
+
+
+How to upgrading dependencies:
 
 ```
 // here is a example to upgrade text and sampler
@@ -113,7 +125,7 @@ cmd: go get golang.org/x/text
 cmd: go get rsc.io/sampler
 ```
 
-now depends on both `rsc.io/quote` and `rsc.io/quote/v3`.
+Now depends on both `rsc.io/quote` and `rsc.io/quote/v3`.
 
 why here is V3?, because:
 
@@ -122,7 +134,7 @@ why here is V3?, because:
 
 > You can have v1, v2, v3 in same module, but can't with v1.1 and v1.2
 
-To konw what new changes in new version, type `go doc rsc.io/quote/v3`.
+To know what new changes in new version, type `go doc rsc.io/quote/v3`.
 
 Remove no need module:
 
